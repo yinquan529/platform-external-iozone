@@ -1991,6 +1991,7 @@ char **argv;
                         break;
 
 		case 'P':	/* Set beginning processor for binding. */
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined(_HPUX_SOURCE) || defined(linux)
 #if defined(_HPUX_SOURCE)
@@ -2008,6 +2009,9 @@ char **argv;
 #else
 			sprintf(splash[splash_line++],"\tProcessor binding not available in this version\n");
 #endif
+#endif
+#else
+			sprintf(splash[splash_line++],"\tProcessor binding not available in Android version\n");
 #endif
                         break;
 		case 'p':	/* purge the processor cache */
@@ -3081,6 +3085,7 @@ char **argv;
 		bzero(buffer,(size_t)l_min(reclen,(long long)cache_size));
 	}
 
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -3098,6 +3103,7 @@ char **argv;
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	orig_size=kilobytes64;
@@ -12412,6 +12418,7 @@ thread_write_test( x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined(_HPUX_SOURCE) || defined(linux)
 	if(ioz_processor_bind)
@@ -12430,6 +12437,7 @@ thread_write_test( x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -13114,6 +13122,7 @@ thread_pwrite_test( x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -13131,6 +13140,7 @@ thread_pwrite_test( x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -13741,6 +13751,7 @@ thread_rwrite_test(x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -13758,6 +13769,7 @@ thread_rwrite_test(x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -14329,6 +14341,7 @@ thread_read_test(x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -14347,6 +14360,7 @@ thread_read_test(x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -15443,6 +15457,7 @@ thread_rread_test(x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -15461,6 +15476,7 @@ thread_rread_test(x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -16010,6 +16026,7 @@ thread_reverse_read_test(x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -16028,6 +16045,7 @@ thread_reverse_read_test(x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -16545,6 +16563,7 @@ thread_stride_read_test(x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -16563,6 +16582,7 @@ thread_stride_read_test(x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -17214,6 +17234,7 @@ thread_ranread_test(x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -17232,6 +17253,7 @@ thread_ranread_test(x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
@@ -17845,6 +17867,7 @@ thread_ranwrite_test( x)
 		xx=chid;
 	}
 #endif
+#if ! defined(__Android__)
 #ifndef NO_THREADS
 #if defined( _HPUX_SOURCE ) || defined ( linux )
 	if(ioz_processor_bind)
@@ -17863,6 +17886,7 @@ thread_ranwrite_test( x)
 #endif
 		my_nap(40);	/* Switch to new cpu */
 	}
+#endif
 #endif
 #endif
 	if(use_thread)
